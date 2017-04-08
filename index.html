@@ -337,11 +337,16 @@
             <p>大家都说没有自己博客的程序员不是好程序员，以前经常活跃在CSDN和简书上，今天抽空整了一下Hexo+GitHub，如果你不舍得买服务器和域名的话，选择这个还是挺不错的，下面就把自己的操作步骤跟大家分享一下，一起学习进步。</p>
 <h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><ul>
 <li>首先你要有个github账号，如果还未注册，先去官网注册<a href="https://github.com" target="_blank" rel="external">Github</a></li>
-<li>第二步你要安装有homebrew，如果还未安装，我将在下篇文章分享homebrew的安装与使用，现在先自行搜索一下</li>
-<li>安装node.js，步骤如下：</li>
+<li>第二步你要安装有homebrew，当然其他方式也可以，这里只介绍使用homebrew进行安装，如果你还未安装homebrew，我将在下篇文章详细介绍homebrew的安装与使用，现在先自行搜索一下</li>
+<li>安装node.js和hexo</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install node</div></pre></td></tr></table></figure>
 <h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
+<h3 id="初始化hexo"><a href="#初始化hexo" class="headerlink" title="初始化hexo"></a>初始化hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
+<h2 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir blog  </div><div class="line">cd blog  </div><div class="line">hexo init</div></pre></td></tr></table></figure>
+<p>前往blog目录下，你会发现此时多了一些文件和文件夹，如下图所示：</p>
+<h2 id="生成一套静态网页"><a href="#生成一套静态网页" class="headerlink" title="生成一套静态网页"></a>生成一套静态网页</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate</div></pre></td></tr></table></figure>
+<h2 id="在服务器上运行"><a href="#在服务器上运行" class="headerlink" title="在服务器上运行"></a>在服务器上运行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure>
 
           
         
