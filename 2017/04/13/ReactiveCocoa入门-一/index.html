@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="homebrew," />
+  <meta name="keywords" content="iOS,ReactiveCocoa," />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="Homebrew官网 Homebrew是干啥的Homebrew简称brew，是Mac OSX上的软件管理工具，能在Mac终端快速安装或卸载软件，类似于linux系统中的apt-get、yum神器。Homebrew是基于Ruby的，Mac默认安装有Ruby，所以安装过程比较简单。 Homebrew安装，一行命令搞定1ruby -e &amp;quot;$(curl -fsSL https://raw.git">
-<meta name="keywords" content="homebrew">
+<meta name="description" content="在开始正文之前，先简单谈谈编程思想 面向过程与面向对象，刚上大学时，学长说你选择面向过程，就找不到对象，吓的我赶紧选择了OC●＾●，开个小玩笑，大家先自行屡一下面向过程与面向对象的区别。面向过程：面向过程是一种以事件、以过程为中心的编程思想，自顶向下顺序执行，逐步求精，就像一个细心的管家，事无具细都要考虑到面向对象：面向对象是将事物高度抽象化，就像个电器，只需要知道功能就可以了，不需要知道它的工作">
+<meta name="keywords" content="iOS,ReactiveCocoa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装Homebrew">
-<meta property="og:url" content="http://yoursite.com/2017/04/08/安装homebrew/index.html">
+<meta property="og:title" content="ReactiveCocoa入门<一>">
+<meta property="og:url" content="http://yoursite.com/2017/04/13/ReactiveCocoa入门-一/index.html">
 <meta property="og:site_name" content="haolizi">
-<meta property="og:description" content="Homebrew官网 Homebrew是干啥的Homebrew简称brew，是Mac OSX上的软件管理工具，能在Mac终端快速安装或卸载软件，类似于linux系统中的apt-get、yum神器。Homebrew是基于Ruby的，Mac默认安装有Ruby，所以安装过程比较简单。 Homebrew安装，一行命令搞定1ruby -e &amp;quot;$(curl -fsSL https://raw.git">
-<meta property="og:updated_time" content="2017-04-10T15:42:15.000Z">
+<meta property="og:description" content="在开始正文之前，先简单谈谈编程思想 面向过程与面向对象，刚上大学时，学长说你选择面向过程，就找不到对象，吓的我赶紧选择了OC●＾●，开个小玩笑，大家先自行屡一下面向过程与面向对象的区别。面向过程：面向过程是一种以事件、以过程为中心的编程思想，自顶向下顺序执行，逐步求精，就像一个细心的管家，事无具细都要考虑到面向对象：面向对象是将事物高度抽象化，就像个电器，只需要知道功能就可以了，不需要知道它的工作">
+<meta property="og:updated_time" content="2017-04-13T07:22:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装Homebrew">
-<meta name="twitter:description" content="Homebrew官网 Homebrew是干啥的Homebrew简称brew，是Mac OSX上的软件管理工具，能在Mac终端快速安装或卸载软件，类似于linux系统中的apt-get、yum神器。Homebrew是基于Ruby的，Mac默认安装有Ruby，所以安装过程比较简单。 Homebrew安装，一行命令搞定1ruby -e &amp;quot;$(curl -fsSL https://raw.git">
+<meta name="twitter:title" content="ReactiveCocoa入门<一>">
+<meta name="twitter:description" content="在开始正文之前，先简单谈谈编程思想 面向过程与面向对象，刚上大学时，学长说你选择面向过程，就找不到对象，吓的我赶紧选择了OC●＾●，开个小玩笑，大家先自行屡一下面向过程与面向对象的区别。面向过程：面向过程是一种以事件、以过程为中心的编程思想，自顶向下顺序执行，逐步求精，就像一个细心的管家，事无具细都要考虑到面向对象：面向对象是将事物高度抽象化，就像个电器，只需要知道功能就可以了，不需要知道它的工作">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/08/安装homebrew/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/13/ReactiveCocoa入门-一/"/>
 
 
 
 
 
-  <title> 安装Homebrew | haolizi </title>
+  <title> ReactiveCocoa入门<一> | haolizi </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/08/安装homebrew/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/13/ReactiveCocoa入门-一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Haochuang">
@@ -281,7 +281,7 @@
             
             
               
-                安装Homebrew
+                ReactiveCocoa入门<一>
               
             
           </h1>
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-08T18:28:27+08:00">
-                2017-04-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T15:22:09+08:00">
+                2017-04-13
               </time>
             
 
@@ -315,9 +315,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/08/安装homebrew/#comments" itemprop="discussionUrl">
+                <a href="/2017/04/13/ReactiveCocoa入门-一/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/08/安装homebrew/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/04/13/ReactiveCocoa入门-一/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -325,7 +325,7 @@
 
           
           
-             <span id="/2017/04/08/安装homebrew/" class="leancloud_visitors" data-flag-title="安装Homebrew">
+             <span id="/2017/04/13/ReactiveCocoa入门-一/" class="leancloud_visitors" data-flag-title="ReactiveCocoa入门<一>">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -354,24 +354,12 @@
       
 
       
-        <p><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew官网</a></p>
-<h2 id="Homebrew是干啥的"><a href="#Homebrew是干啥的" class="headerlink" title="Homebrew是干啥的"></a>Homebrew是干啥的</h2><p><b>Homebrew</b>简称brew，是Mac OSX上的软件管理工具，能在Mac终端快速安装或卸载软件，类似于linux系统中的apt-get、yum神器。<br><b>Homebrew</b>是基于Ruby的，Mac默认安装有Ruby，所以安装过程比较简单。</p>
-<h2 id="Homebrew安装，一行命令搞定"><a href="#Homebrew安装，一行命令搞定" class="headerlink" title="Homebrew安装，一行命令搞定"></a>Homebrew安装，一行命令搞定</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div></pre></td></tr></table></figure>
-<p>如果地址不可用，可能是被墙了，多试几次，或者Google一些第三方的地址试试。</p>
-<h2 id="Homebrew常用命令（下面-代表你想操作的对象）"><a href="#Homebrew常用命令（下面-代表你想操作的对象）" class="headerlink" title="Homebrew常用命令（下面**代表你想操作的对象）"></a>Homebrew常用命令（下面**代表你想操作的对象）</h2><ul>
-<li>brew –help       简洁命令帮助</li>
-<li>man brew          完整命令帮助</li>
-<li>brew list         显示已经安装的所有软件包</li>
-<li>brew search **    搜索</li>
-<li>brew info **      查询</li>
-<li>brew install **   安装</li>
-<li>brew uninstall ** 卸载</li>
-<li>brew outdated     检查是否有新版本</li>
-<li>brew update       更新</li>
-<li>brew upgrade      升级所有可以升级的软件</li>
-<li>brew cleanup      清理所有已安装软件包的历史老版本<br>等等。</li>
+        <h2 id="在开始正文之前，先简单谈谈编程思想"><a href="#在开始正文之前，先简单谈谈编程思想" class="headerlink" title="在开始正文之前，先简单谈谈编程思想"></a>在开始正文之前，先简单谈谈编程思想</h2><ul>
+<li><b>面向过程与面向对象</b>，刚上大学时，学长说你选择面向过程，就找不到对象，吓的我赶紧选择了OC●＾●，开个小玩笑，大家先自行屡一下面向过程与面向对象的区别。<br><br><b>面向过程：</b>面向过程是一种以事件、以过程为中心的编程思想，自顶向下顺序执行，逐步求精，就像一个细心的管家，事无具细都要考虑到<br><b>面向对象：</b>面向对象是将事物高度抽象化，就像个电器，只需要知道功能就可以了，不需要知道它的工作原理。面向对象三大特点：继承、封装、多态。<br>这里只是简单打比方进行一下区别对比，想要了解更精细，请自行Google</li>
+<li><b>链式编程思想：</b>将多个操作（多行代码）通过点号（.）链接在一起成为一句代码，提高代码可读性。特点：方法的返回值是block,block必须有返回值（本身对象），block参数（需要操作的值），如果不太明白，请参考masonry框架。</li>
+<li><b>响应式编程思想：</b>不需要考虑调用顺序，只需要知道考虑结果，类似于蝴蝶效应，产生一个事件，会影响很多东西，这些事件像流一样的传播出去，然后影响结果，借用面向对象的一句话，万物皆是流。比如KVO的运用。</li>
+<li><b>函数式编程思想：</b>是把操作尽量写成一系列嵌套的函数或者方法调用。特点：每个方法必须有返回值（本身对象），把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="ReactiveCocoa简介"><a href="#ReactiveCocoa简介" class="headerlink" title="ReactiveCocoa简介"></a>ReactiveCocoa简介</h3>ReactiveCocoa（简称为RAC），是由Github开源的一个应用于iOS和OS开发的新框架。<h3 id="ReactiveCocoa作用"><a href="#ReactiveCocoa作用" class="headerlink" title="ReactiveCocoa作用"></a>ReactiveCocoa作用</h3>我们在iOS开发时，有着各种消息响应、传递机制，包括 KVO、block、Notification、delegation、属性变化、网络请求以及target-action方式等。<br>这些都可以通过RAC处理，RAC为事件提供了很多处理方法，而且更加方便，可以把代码写在一起，方便管理。符合我们开发追求的高聚合，低耦合的思想。<h3 id="RAC最核心的类RACSignal，放在下篇分享。"><a href="#RAC最核心的类RACSignal，放在下篇分享。" class="headerlink" title="RAC最核心的类RACSignal，放在下篇分享。"></a>RAC最核心的类RACSignal，放在下篇分享。</h3></li>
 </ul>
-<p>你有没有感觉到自己的终端既丑又不灵活？接下来我会给大家分享如何安装iTerm及其主题</p>
 
       
     </div>
@@ -417,7 +405,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/homebrew/" rel="tag"># homebrew</a>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/ReactiveCocoa/" rel="tag"># ReactiveCocoa</a>
           
         </div>
       
@@ -430,18 +420,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/13/ReactiveCocoa入门-一/" rel="next" title="ReactiveCocoa入门<一>">
-                <i class="fa fa-chevron-left"></i> ReactiveCocoa入门<一>
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/07/Mac下利用Hexo+GitHub搭建自己的博客/" rel="prev" title="Mac下利用Hexo+GitHub搭建自己的博客">
-                Mac下利用Hexo+GitHub搭建自己的博客 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/08/安装homebrew/" rel="prev" title="安装Homebrew">
+                安装Homebrew <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew是干啥的"><span class="nav-number">1.</span> <span class="nav-text">Homebrew是干啥的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew安装，一行命令搞定"><span class="nav-number">2.</span> <span class="nav-text">Homebrew安装，一行命令搞定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Homebrew常用命令（下面-代表你想操作的对象）"><span class="nav-number">3.</span> <span class="nav-text">Homebrew常用命令（下面**代表你想操作的对象）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在开始正文之前，先简单谈谈编程思想"><span class="nav-number">1.</span> <span class="nav-text">在开始正文之前，先简单谈谈编程思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactiveCocoa简介"><span class="nav-number">2.1.</span> <span class="nav-text">ReactiveCocoa简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactiveCocoa作用"><span class="nav-number">2.2.</span> <span class="nav-text">ReactiveCocoa作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAC最核心的类RACSignal，放在下篇分享。"><span class="nav-number">2.3.</span> <span class="nav-text">RAC最核心的类RACSignal，放在下篇分享。</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -725,9 +711,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/04/08/安装homebrew/';
-          this.page.identifier = '2017/04/08/安装homebrew/';
-          this.page.title = '安装Homebrew';
+          this.page.url = 'http://yoursite.com/2017/04/13/ReactiveCocoa入门-一/';
+          this.page.identifier = '2017/04/13/ReactiveCocoa入门-一/';
+          this.page.title = 'ReactiveCocoa入门<一>';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://haolizi.disqus.com/embed.js';
