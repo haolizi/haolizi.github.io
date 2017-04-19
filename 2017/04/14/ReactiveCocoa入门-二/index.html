@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/14/ReactiveCocoa入门-二/index.html">
 <meta property="og:site_name" content="haolizi">
 <meta property="og:description" content="如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。  RACSignal是一个信号类，信号是数据流，可以被绑定和传递。它本身并不具备发送信号的能力，默认的一个信号都是冷信号，即使值改变">
-<meta property="og:updated_time" content="2017-04-19T08:22:53.000Z">
+<meta property="og:updated_time" content="2017-04-19T10:30:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactiveCocoa入门<二>">
 <meta name="twitter:description" content="如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。  RACSignal是一个信号类，信号是数据流，可以被绑定和传递。它本身并不具备发送信号的能力，默认的一个信号都是冷信号，即使值改变">
@@ -356,12 +356,14 @@
       
         <p>如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。</p>
 <ul>
-<li><p><b>RACSignal</b>是一个信号类，信号是数据流，可以被绑定和传递。它本身并不具备发送信号的能力，默认的一个信号都是冷信号，即使值改变了，也不会触发，只有订阅了这个信号（subscribeNext），才会变成热信号，当值改变时就会触发，发送信号。<br>signal发送事件流给它的subscriber。主要有三种类型的事件：next、error、complete，今天主讲next事件<br>具体使用如下：</p>
+<li><p><b>RACSignal</b>是一个信号类，信号是数据流，可以被绑定和传递。它本身并不具备发送信号的能力，默认的一个信号都是冷信号，即使值改变了，也不会触发，只有订阅了这个信号（subscribeNext），才会变成热信号，当值改变时就会触发，发送信号。<br>signal发送事件流给它的subscriber。主要有三种类型的事件：next、error、complete，今天主讲next事件<br>简单范例如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//1.创建信号，把didSubscribe保存到信号中，信号被订阅时才会激活</div><div class="line">RACSignal *siganl = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">   //subscriber：订阅者</div><div class="line">   //2.发送信号</div><div class="line">   [subscriber sendNext:@2];</div><div class="line">   // 发送信号完成，内部会自动调用[RACDisposable disposable]取消订阅信号。</div><div class="line">   [subscriber sendCompleted];</div><div class="line">   </div><div class="line">   //disposable：取消订阅或者清理资源</div><div class="line">   //当信号发送完成或者发送错误，就会执行这个block，取消订阅信号。</div><div class="line">   return [RACDisposable disposableWithBlock:^&#123;</div><div class="line">      NSLog(@&quot;信号被销毁，当前信号不再被订阅&quot;);</div><div class="line">   &#125;];</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 3.订阅信号，信号被激活.</div><div class="line">[siganl subscribeNext:^(id x) &#123;</div><div class="line">   NSLog(@&quot;接收到数据:%@&quot;,x);</div><div class="line">&#125;];</div><div class="line">//执行顺序：创建信号--订阅信号--发送信号--取消订阅</div></pre></td></tr></table></figure>
 </li>
-<li><p><b>RACSubject</b> 信号提供者，自己可以充当信号，又能发送信号。</p>
+<li><p><b>RACSubject</b> 信号提供者，自己可以充当信号，又能发送信号，通常用来代替代理。<br>简单范例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 1.创建信号，跟signal有点区别</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line"></div><div class="line">// 2.订阅信号</div><div class="line">[subject subscribeNext:^(id x) &#123;</div><div class="line">// block:当有数据发出的时候就会调用</div><div class="line">NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 3.发送信号</div><div class="line">[subject sendNext:value];</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>代替代理：</p>
 
       
     </div>
