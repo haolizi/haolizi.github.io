@@ -90,13 +90,13 @@
 <meta name="description" content="RACSignal与RACSubjectRACSignal如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。RACSignal 是一个信号类，信号是数据流，可以被绑定和传递。它本身并不">
 <meta name="keywords" content="iOS,ReactiveCocoa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ReactiveCocoa入门<二>">
+<meta property="og:title" content="ReactiveCocoa入门<二> —— RACSignal与RACSubject">
 <meta property="og:url" content="http://yoursite.com/2017/04/14/ReactiveCocoa入门-二/index.html">
 <meta property="og:site_name" content="haolizi">
 <meta property="og:description" content="RACSignal与RACSubjectRACSignal如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。RACSignal 是一个信号类，信号是数据流，可以被绑定和传递。它本身并不">
-<meta property="og:updated_time" content="2017-04-20T07:32:40.000Z">
+<meta property="og:updated_time" content="2017-04-20T07:42:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ReactiveCocoa入门<二>">
+<meta name="twitter:title" content="ReactiveCocoa入门<二> —— RACSignal与RACSubject">
 <meta name="twitter:description" content="RACSignal与RACSubjectRACSignal如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。RACSignal 是一个信号类，信号是数据流，可以被绑定和传递。它本身并不">
 
 
@@ -131,7 +131,7 @@
 
 
 
-  <title> ReactiveCocoa入门<二> | haolizi </title>
+  <title> ReactiveCocoa入门<二> —— RACSignal与RACSubject | haolizi </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -281,7 +281,7 @@
             
             
               
-                ReactiveCocoa入门<二>
+                ReactiveCocoa入门<二> —— RACSignal与RACSubject
               
             
           </h1>
@@ -325,7 +325,7 @@
 
           
           
-             <span id="/2017/04/14/ReactiveCocoa入门-二/" class="leancloud_visitors" data-flag-title="ReactiveCocoa入门<二>">
+             <span id="/2017/04/14/ReactiveCocoa入门-二/" class="leancloud_visitors" data-flag-title="ReactiveCocoa入门<二> —— RACSignal与RACSubject">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -361,8 +361,7 @@
 <p>三、在FirstVC跳转界面的方法里添加如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 创建控制器</div><div class="line">SecondVC *secondVC = [[SecondVC alloc] init];</div><div class="line">   // 设置代理信号</div><div class="line">   secondVC = [RACSubject subject];</div><div class="line">   // 订阅代理信号</div><div class="line">   [secondVC subscribeNext:^(id x) &#123;</div><div class="line">   NSLog(@&quot;回调的值：%@&quot;, x);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 跳转界面</div><div class="line">[self.navigationController pushViewController:secondVC animated:YES];</div></pre></td></tr></table></figure></p>
 <p>是不是很简单？提到subject，就顺便说说它的子类replaySubject：<br><b>RACReplaySubject</b> 从字面上我们应该可以看出它是重复提供信号类，简单范例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 创建信号</div><div class="line">RACReplaySubject *replaySubject = [RACReplaySubject subject];</div><div class="line"></div><div class="line">// 发送信号</div><div class="line">[replaySubject sendNext:value1];</div><div class="line">[replaySubject sendNext:value2];</div><div class="line"></div><div class="line">// 订阅信号1</div><div class="line">[replaySubject subscribeNext:^(id x) &#123;</div><div class="line">   NSLog(@&quot;订阅信号1接收到数据%@&quot;,x);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 订阅信号2</div><div class="line">[replaySubject subscribeNext:^(id x) &#123;</div><div class="line">   NSLog(@&quot;订阅信号2接收到的数据%@&quot;,x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure></p>
 <p>看出来replaySubject与subject的区别了吗？<br>replaySubject可以先发送信号，再订阅信号，但subject不行，subject必须先订阅信号，才能激活信号，然后发送的信号才能被接收到。<br>那么这两个信号类分别在什么情况下使用呢？如果一个信号每被订阅一次就需要重复发送一遍之前的值，就使用replaySubject，其他的按照你实际情况各取所需。</p>
-<p>未完待续~</p>
-
+<h3 id="下篇我将分享ReactiveCocoa的常用操作"><a href="#下篇我将分享ReactiveCocoa的常用操作" class="headerlink" title="下篇我将分享ReactiveCocoa的常用操作"></a>下篇我将分享ReactiveCocoa的常用操作</h3>
       
     </div>
 
@@ -428,8 +427,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/13/ReactiveCocoa入门-一/" rel="prev" title="ReactiveCocoa入门<一>">
-                ReactiveCocoa入门<一> <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/13/ReactiveCocoa入门-一/" rel="prev" title="ReactiveCocoa入门<一> —— ReactiveCocoa简介">
+                ReactiveCocoa入门<一> —— ReactiveCocoa简介 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -568,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RACSignal与RACSubject"><span class="nav-number">1.</span> <span class="nav-text">RACSignal与RACSubject</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RACSignal"><span class="nav-number">1.1.</span> <span class="nav-text">RACSignal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RACSubject"><span class="nav-number">1.2.</span> <span class="nav-text">RACSubject</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RACSignal与RACSubject"><span class="nav-number">1.</span> <span class="nav-text">RACSignal与RACSubject</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RACSignal"><span class="nav-number">1.1.</span> <span class="nav-text">RACSignal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RACSubject"><span class="nav-number">1.2.</span> <span class="nav-text">RACSubject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下篇我将分享ReactiveCocoa的常用操作"><span class="nav-number">1.3.</span> <span class="nav-text">下篇我将分享ReactiveCocoa的常用操作</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -715,7 +714,7 @@
         var disqus_config = function () {
           this.page.url = 'http://yoursite.com/2017/04/14/ReactiveCocoa入门-二/';
           this.page.identifier = '2017/04/14/ReactiveCocoa入门-二/';
-          this.page.title = 'ReactiveCocoa入门<二>';
+          this.page.title = 'ReactiveCocoa入门<二> —— RACSignal与RACSubject';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://haolizi.disqus.com/embed.js';
