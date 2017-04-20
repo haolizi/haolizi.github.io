@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。  RACSignal 是一个信号类，信号是数据流，可以被绑定和传递。它本身并不具备发送信号的能力，默认的一个信号都是冷信号，即使值改">
+<meta name="description" content="RACSignal与RACSubjectRACSignal如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。  RACSignal 是一个信号类，信号是数据流，可以被绑定和传递。它本身">
 <meta name="keywords" content="iOS,ReactiveCocoa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ReactiveCocoa入门<二>">
 <meta property="og:url" content="http://yoursite.com/2017/04/14/ReactiveCocoa入门-二/index.html">
 <meta property="og:site_name" content="haolizi">
-<meta property="og:description" content="如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。  RACSignal 是一个信号类，信号是数据流，可以被绑定和传递。它本身并不具备发送信号的能力，默认的一个信号都是冷信号，即使值改">
-<meta property="og:updated_time" content="2017-04-19T11:28:37.000Z">
+<meta property="og:description" content="RACSignal与RACSubjectRACSignal如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。  RACSignal 是一个信号类，信号是数据流，可以被绑定和传递。它本身">
+<meta property="og:updated_time" content="2017-04-20T07:30:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactiveCocoa入门<二>">
-<meta name="twitter:description" content="如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。  RACSignal 是一个信号类，信号是数据流，可以被绑定和传递。它本身并不具备发送信号的能力，默认的一个信号都是冷信号，即使值改">
+<meta name="twitter:description" content="RACSignal与RACSubjectRACSignal如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。  RACSignal 是一个信号类，信号是数据流，可以被绑定和传递。它本身">
 
 
 
@@ -354,13 +354,13 @@
       
 
       
-        <p>如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。</p>
+        <h2 id="RACSignal与RACSubject"><a href="#RACSignal与RACSubject" class="headerlink" title="RACSignal与RACSubject"></a>RACSignal与RACSubject</h2><h3 id="RACSignal"><a href="#RACSignal" class="headerlink" title="RACSignal"></a>RACSignal</h3><p>如何导入这里就不说了，你可以使用CocoaPods导入（推荐），也可以从github上下载导入。上文说道RAC最核心的类RACSignal，如果把RACSignal弄明白，基本上就可以使用RAC进行开发了，RACSignal到底是个什么东西呢，别急，切听我细细道来。</p>
 <ul>
-<li><p><b>RACSignal</b> 是一个信号类，信号是数据流，可以被绑定和传递。它本身并不具备发送信号的能力，默认的一个信号都是冷信号，即使值改变了，也不会触发，只有订阅了这个信号（subscribeNext），才会变成热信号，当值改变时就会触发，发送信号。<br>signal发送事件流给它的subscriber。主要有三种类型的事件：next、error、complete，今天主讲next事件<br>简单范例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//1.创建信号，把didSubscribe保存到信号中，信号被订阅时才会激活</div><div class="line">RACSignal *siganl = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">   //subscriber：订阅者</div><div class="line">   //2.发送信号</div><div class="line">   [subscriber sendNext:value];</div><div class="line">   // 发送信号完成，内部会自动调用[RACDisposable disposable]取消订阅信号。</div><div class="line">   [subscriber sendCompleted];</div><div class="line">   </div><div class="line">   //disposable：取消订阅或者清理资源</div><div class="line">   //当信号发送完成或者发送错误，就会执行这个block，取消订阅信号。</div><div class="line">   return [RACDisposable disposableWithBlock:^&#123;</div><div class="line">      NSLog(@&quot;信号被销毁，当前信号不再被订阅&quot;);</div><div class="line">   &#125;];</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 3.订阅信号，信号被激活.</div><div class="line">[siganl subscribeNext:^(id x) &#123;</div><div class="line">   NSLog(@&quot;接收到数据:%@&quot;,x);</div><div class="line">&#125;];</div><div class="line">//执行顺序：创建信号--订阅信号--发送信号--取消订阅</div></pre></td></tr></table></figure>
+<li><b>RACSignal</b> 是一个信号类，信号是数据流，可以被绑定和传递。它本身并不具备发送信号的能力，默认的一个信号都是冷信号，即使值改变了，也不会触发，只有订阅了这个信号（subscribeNext），才会变成热信号，当值改变时就会触发，发送信号。<br>signal发送事件流给它的subscriber。主要有三种类型的事件：next、error、complete，今天主讲next事件<br>简单范例如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//1.创建信号，把didSubscribe保存到信号中，信号被订阅时才会激活</div><div class="line">RACSignal *siganl = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</div><div class="line">   //subscriber：订阅者</div><div class="line">   //2.发送信号</div><div class="line">   [subscriber sendNext:value];</div><div class="line">   // 发送信号完成，内部会自动调用[RACDisposable disposable]取消订阅信号。</div><div class="line">   [subscriber sendCompleted];</div><div class="line">   </div><div class="line">   //disposable：取消订阅或者清理资源</div><div class="line">   //当信号发送完成或者发送错误，就会执行这个block，取消订阅信号。</div><div class="line">   return [RACDisposable disposableWithBlock:^&#123;</div><div class="line">      NSLog(@&quot;信号被销毁，当前信号不再被订阅&quot;);</div><div class="line">   &#125;];</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 3.订阅信号，信号被激活.</div><div class="line">[siganl subscribeNext:^(id x) &#123;</div><div class="line">   NSLog(@&quot;接收到数据:%@&quot;,x);</div><div class="line">&#125;];</div><div class="line">//执行顺序：创建信号--订阅信号--发送信号--取消订阅</div></pre></td></tr></table></figure>
 </li>
-<li><p><b>RACSubject</b> 信号提供者，自己可以充当信号，又能发送信号，通常用来代替代理。<br>简单范例如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 1.创建信号，跟signal有点区别</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line"></div><div class="line">// 2.订阅信号</div><div class="line">[subject subscribeNext:^(id x) &#123;</div><div class="line">// block:当有数据发出的时候就会调用</div><div class="line">NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 3.发送信号</div><div class="line">[subject sendNext:value];</div></pre></td></tr></table></figure>
+</ul>
+<h3 id="RACSubject"><a href="#RACSubject" class="headerlink" title="RACSubject"></a>RACSubject</h3><ul>
+<li><b>RACSubject</b> 信号提供者，自己可以充当信号，又能发送信号，通常用来代替代理。<br>简单范例如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 1.创建信号，跟signal有点区别</div><div class="line">RACSubject *subject = [RACSubject subject];</div><div class="line"></div><div class="line">// 2.订阅信号</div><div class="line">[subject subscribeNext:^(id x) &#123;</div><div class="line">// block:当有数据发出的时候就会调用</div><div class="line">NSLog(@&quot;%@&quot;,x);</div><div class="line">&#125;];</div><div class="line"></div><div class="line">// 3.发送信号</div><div class="line">[subject sendNext:value];</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>代替代理（跟block有点类似，看一下就明白了）<br>一、创建两个VC，这里分别用FirstVC和SecondVC代替，在SecondVC的.h中声明一个全局的信号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong) RACSubject *signal;</div></pre></td></tr></table></figure></p>
@@ -495,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7cache.postmusic.cn//20170407190358416-key"
@@ -560,6 +569,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RACSignal与RACSubject"><span class="nav-number">1.</span> <span class="nav-text">RACSignal与RACSubject</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RACSignal"><span class="nav-number">1.1.</span> <span class="nav-text">RACSignal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RACSubject"><span class="nav-number">1.2.</span> <span class="nav-text">RACSubject</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
