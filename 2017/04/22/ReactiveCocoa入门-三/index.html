@@ -87,14 +87,17 @@
 
 
 
+<meta name="description" content="信号操作 映射 组合 过滤 条件 切片 线程 时间 重复 节流  映射 map：对源信号发出的数据做修改，传入一个block，类型是返回对象，参数是value，不用包装成信号，直接返回修改后的数据。 flattenMap：用于信号中信号，当源信号发出数据时，返回一个新的信号，但是订阅者收到的是返回信号中的值，信号可以是任意类型。1234567891011121314//map范例/* map步骤">
 <meta name="keywords" content="iOS,ReactiveCocoa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ReactiveCocoa入门<三> —— RAC常用方法">
 <meta property="og:url" content="http://yoursite.com/2017/04/22/ReactiveCocoa入门-三/index.html">
 <meta property="og:site_name" content="haolizi">
-<meta property="og:updated_time" content="2017-04-22T09:53:44.000Z">
+<meta property="og:description" content="信号操作 映射 组合 过滤 条件 切片 线程 时间 重复 节流  映射 map：对源信号发出的数据做修改，传入一个block，类型是返回对象，参数是value，不用包装成信号，直接返回修改后的数据。 flattenMap：用于信号中信号，当源信号发出数据时，返回一个新的信号，但是订阅者收到的是返回信号中的值，信号可以是任意类型。1234567891011121314//map范例/* map步骤">
+<meta property="og:updated_time" content="2017-04-28T07:30:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactiveCocoa入门<三> —— RAC常用方法">
+<meta name="twitter:description" content="信号操作 映射 组合 过滤 条件 切片 线程 时间 重复 节流  映射 map：对源信号发出的数据做修改，传入一个block，类型是返回对象，参数是value，不用包装成信号，直接返回修改后的数据。 flattenMap：用于信号中信号，当源信号发出数据时，返回一个新的信号，但是订阅者收到的是返回信号中的值，信号可以是任意类型。1234567891011121314//map范例/* map步骤">
 
 
 
@@ -351,7 +354,23 @@
       
 
       
-        
+        <h2 id="信号操作"><a href="#信号操作" class="headerlink" title="信号操作"></a>信号操作</h2><ul>
+<li>映射</li>
+<li>组合</li>
+<li>过滤</li>
+<li>条件</li>
+<li>切片</li>
+<li>线程</li>
+<li>时间</li>
+<li>重复</li>
+<li>节流</li>
+</ul>
+<h3 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h3><ul>
+<li><b>map：</b>对源信号发出的数据做修改，传入一个block，类型是返回对象，参数是value，不用包装成信号，直接返回修改后的数据。</li>
+<li><b>flattenMap：</b>用于信号中信号，当源信号发出数据时，返回一个新的信号，但是订阅者收到的是返回信号中的值，信号可以是任意类型。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//map范例</div><div class="line">/*</div><div class="line"> map步骤 </div><div class="line"> 1.传入一个block,类型是返回对象，参数是value</div><div class="line"> 2.value就是源信号的内容，直接拿到源信号的内容做处理</div><div class="line"> 3.把处理好的内容，直接返回就好了，不用包装成信号，返回的值，就是映射的值</div><div class="line">*/</div><div class="line">[[self.accountTextField.rac_textSignal map:^id(id value) &#123;</div><div class="line">    //当源信号发出，就会调用这个block，修改源信号的内容</div><div class="line">    //返回值：就是处理完源信号的内容</div><div class="line">    return [NSString stringWithFormat:@&quot;输出:%@&quot;,value];</div><div class="line">&#125;] subscribeNext:^(id x) &#123;</div><div class="line">    NSLog(@&quot;结果:%@&quot;,x);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
     </div>
 
@@ -473,8 +492,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://7cache.postmusic.cn//20170407190358416-key"
@@ -538,6 +566,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#信号操作"><span class="nav-number">1.</span> <span class="nav-text">信号操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#映射"><span class="nav-number">1.1.</span> <span class="nav-text">映射</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
