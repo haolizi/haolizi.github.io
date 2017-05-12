@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/13/ReactiveCocoa入门-一/index.html">
 <meta property="og:site_name" content="haolizi">
 <meta property="og:description" content="在开始正文之前，先简单谈谈编程思想 面向过程与面向对象面向过程：面向过程是一种以事件、以过程为中心的编程思想，自顶向下顺序执行，逐步求精，就像一个细心的管家，事无具细都要考虑到。面向对象：万物皆对象，它是将事物高度抽象化，就像个电器，只需要知道功能就可以了，不需要知道它的工作原理。面向对象三大特点：继承、封装、多态。这里只是简单打比方进行一下区别对比，想要了解更精细，请自行Google 链式编程思">
-<meta property="og:updated_time" content="2017-04-20T07:43:40.000Z">
+<meta property="og:updated_time" content="2017-05-12T02:31:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ReactiveCocoa入门<一> —— ReactiveCocoa简介">
 <meta name="twitter:description" content="在开始正文之前，先简单谈谈编程思想 面向过程与面向对象面向过程：面向过程是一种以事件、以过程为中心的编程思想，自顶向下顺序执行，逐步求精，就像一个细心的管家，事无具细都要考虑到。面向对象：万物皆对象，它是将事物高度抽象化，就像个电器，只需要知道功能就可以了，不需要知道它的工作原理。面向对象三大特点：继承、封装、多态。这里只是简单打比方进行一下区别对比，想要了解更精细，请自行Google 链式编程思">
@@ -358,9 +358,10 @@
 <li><b>面向过程与面向对象</b><br><b>面向过程：</b>面向过程是一种以事件、以过程为中心的编程思想，自顶向下顺序执行，逐步求精，就像一个细心的管家，事无具细都要考虑到。<br><b>面向对象：</b>万物皆对象，它是将事物高度抽象化，就像个电器，只需要知道功能就可以了，不需要知道它的工作原理。面向对象三大特点：继承、封装、多态。<br>这里只是简单打比方进行一下区别对比，想要了解更精细，请自行Google</li>
 <li><b>链式编程思想：</b>将多个操作（多行代码）通过点号（.）链接在一起成为一句代码，提高代码可读性。特点：方法的返回值是block,block必须有返回值（本身对象），block参数（需要操作的值），如果不太明白，请参考masonry框架。</li>
 <li><b>响应式编程思想：</b>不需要考虑调用顺序，只需要知道考虑结果，类似于蝴蝶效应，产生一个事件，会影响很多东西，这些事件像流一样的传播出去，然后影响结果，借用面向对象的一句话，万物皆是流。比如KVO的运用。</li>
-<li><b>函数式编程思想：</b>是把操作尽量写成一系列嵌套的函数或者方法调用。特点：每个方法必须有返回值（本身对象），把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="ReactiveCocoa简介"><a href="#ReactiveCocoa简介" class="headerlink" title="ReactiveCocoa简介"></a>ReactiveCocoa简介</h3>ReactiveCocoa（简称为RAC），是由Github开源的一个应用于iOS和OS开发的新框架。<h3 id="ReactiveCocoa作用"><a href="#ReactiveCocoa作用" class="headerlink" title="ReactiveCocoa作用"></a>ReactiveCocoa作用</h3>　　我们在iOS开发时，有着各种消息响应、传递机制，包括 KVO、block、Notification、delegation、属性变化、网络请求以及target-action方式等。<br>　　这些都可以通过RAC处理，RAC为事件提供了很多处理方法，大量使用block，更加方便，可以把代码写在一起，方便管理。符合我们开发追求的高聚合，低耦合的思想。<br>　　ReactiveCocoa结合了函数式编程（Functional Programming）、响应式编程（Reactive Programming）等编程思想，所以有人描述RAC为函数响应式编程（FRP）框架。<br>　　使用RAC解决问题，就不需要考虑调用顺序，直接考虑结果，把每一次操作都写成一系列嵌套的方法中，使代码高聚合，方便管理，不仅是这些，它还提供给你轻松转换/分解/合并/过滤信息的能力，爽的不要不要的。<br>　　不过万物分阴阳，有得必有失，如果我们太过依赖于第三方框架，当它不随潮流更新或者彻底废弃了，那后期维护项目时就尴尬了，所以我们最好先了解清楚它的编程思想。<h3 id="RAC最核心的类RACSignal，放在下篇分享。"><a href="#RAC最核心的类RACSignal，放在下篇分享。" class="headerlink" title="RAC最核心的类RACSignal，放在下篇分享。"></a>RAC最核心的类RACSignal，放在下篇分享。</h3></li>
+<li><b>函数式编程思想：</b>是把操作尽量写成一系列嵌套的函数或者方法调用。特点：每个方法必须有返回值（本身对象），把函数或者Block当做参数,block参数（需要操作的值）block返回值（操作结果）<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="ReactiveCocoa简介"><a href="#ReactiveCocoa简介" class="headerlink" title="ReactiveCocoa简介"></a>ReactiveCocoa简介</h3>ReactiveCocoa（简称为RAC），是由Github开源的一个应用于iOS和OS开发的新框架。<h3 id="ReactiveCocoa作用"><a href="#ReactiveCocoa作用" class="headerlink" title="ReactiveCocoa作用"></a>ReactiveCocoa作用</h3>　　我们在iOS开发时，有着各种消息响应、传递机制，包括 KVO、block、Notification、delegation、属性变化、网络请求以及target-action方式等。<br>　　这些都可以通过RAC处理，RAC为事件提供了很多处理方法，大量使用block，更加方便，可以把代码写在一起，方便管理。符合我们开发追求的高聚合，低耦合的思想。<br>　　ReactiveCocoa结合了函数式编程（Functional Programming）、响应式编程（Reactive Programming）等编程思想，所以有人描述RAC为函数响应式编程（FRP）框架。<br>　　使用RAC解决问题，就不需要考虑调用顺序，直接考虑结果，把每一次操作都写成一系列嵌套的方法中，使代码高聚合，方便管理，不仅是这些，它还提供给你轻松转换/分解/合并/过滤信息的能力，爽的不要不要的。</li>
 </ul>
-
+<p>　　<code>不过万物分阴阳，有得必有失，如果我们太过依赖于第三方框架，当它不随潮流更新或者彻底废弃了，那后期维护项目时就尴尬了，所以我们最好先了解清楚它的编程思想和设计理念、然后再决定取舍。</code></p>
+<h3 id="RAC最核心的类RACSignal，放在下篇分享。"><a href="#RAC最核心的类RACSignal，放在下篇分享。" class="headerlink" title="RAC最核心的类RACSignal，放在下篇分享。"></a>RAC最核心的类RACSignal，放在下篇分享。</h3>
       
     </div>
 
